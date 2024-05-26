@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
 
-function App() {
+const App = () => {
+  console.log('Text na zacatku komponenty');
+
+  useEffect(() => {
+    console.log('Ja jsem useEffect'); // useEffect se vykonzoluje jako posledni
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Učíme se useEffect</h1>
+      {console.log('Text uvnitr return')}
     </div>
   );
-}
+};
 
 export default App;
+
+// useeffect se pouziva pro neco co se deje az nakonec, napriklad casovac, neni to po kliknuti, spousti se az na konec.
+
+// musime ho jako useState taky naimportovat
