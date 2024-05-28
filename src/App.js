@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
 
-setInterval(() => {
-  console.log('test');
-}, 3000);
-
 const App = () => {
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString);
 
-  useEffect(() => {});
+  useEffect(() => {
+    setCurrentTime(new Date().toLocalTimeString);
+  }, 1000);
 
   return (
     <div>
@@ -34,3 +32,5 @@ export default App;
 // aktualni cas vlozim do currentTime a komponenta se musi znova refreshut. Jak zapezpecime, ze se bude komponenta refreshovat kazdou vterinu? aby se cas vypisoval dokola. "Nastartuj mi az na konci to pocitani."- to znamena, ze kazdu vterinu mi ten cas nastav. Na to pouzijem useEffect. useEffect(() => {});
 
 // pouziju setInterval ==> nastavi, jak casto se neco ma opakovat. setInterval(() => {console.log('test');}, 3000); 3000 = opakovani po 3 sec, a do hranatych zavorek napisem co se ma provest. === kazde 3 vteriny se do console vypise 'test'
+
+// useEffect pouzivame na vedlejsi efekty. Chceme vypsat soucasny cas, kdyz prijede na tu stranku poprve ==> prijde, stranka se nacte, vypise se ten soucasny stav. Vedlejsi efekt je to, ze mu to porad refreshujeme.
