@@ -1,11 +1,17 @@
 import { useState, useEffect } from 'react';
 
 const App = () => {
-  const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString);
+  const [currentTime, setCurrentTime] = useState(
+    new Date().toLocaleTimeString(),
+  );
 
   useEffect(() => {
-    setCurrentTime(new Date().toLocalTimeString);
-  }, 1000);
+    setInterval(() => {
+      setCurrentTime(new Date().toLocaleTimeString());
+    }, 1000);
+
+    //console.log('Ja jsem uvnitr useEffectu');
+  }, []);
 
   return (
     <div>
@@ -34,3 +40,5 @@ export default App;
 // pouziju setInterval ==> nastavi, jak casto se neco ma opakovat. setInterval(() => {console.log('test');}, 3000); 3000 = opakovani po 3 sec, a do hranatych zavorek napisem co se ma provest. === kazde 3 vteriny se do console vypise 'test'
 
 // useEffect pouzivame na vedlejsi efekty. Chceme vypsat soucasny cas, kdyz prijede na tu stranku poprve ==> prijde, stranka se nacte, vypise se ten soucasny stav. Vedlejsi efekt je to, ze mu to porad refreshujeme.
+
+// Po tom co se nastavi setInterval, tak uz nepotrebujeme, aby useEffect bezal na pozadi. Pomocou zavorek [] zaistime, ze sa useEffect spusti jen jednou.
