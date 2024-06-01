@@ -7,6 +7,7 @@ const App = () => {
   // count
 
   const [count, setCount] = useState(0);
+  const [value, setValue] = useState(0);
 
   useEffect(() => {
     document.title = `Počet kliknutí ${count}`;
@@ -16,6 +17,9 @@ const App = () => {
     <div>
       <p>Počet kliknuti na tlačítko: {count}</p>
       <button onClick={() => setCount(count + 1)}>Klikni na mē</button>
+
+      <p>Obsah promenne value: {value}</p>
+      <button onClick={() => setValue(value + 1)}>Opēt klikni</button>
     </div>
   );
 };
