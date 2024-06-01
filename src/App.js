@@ -1,27 +1,50 @@
+// useEffect a zavisle promenna
+// useEffect se nemusi spustit vzdycky, ale jen kdy se zmeni nejaka promenna
+
 import { useState, useEffect } from 'react';
 
 const App = () => {
-  const [currentTime, setCurrentTime] = useState(
-    new Date().toLocaleTimeString(),
-  );
+  // count
+
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    setInterval(() => {
-      setCurrentTime(new Date().toLocaleTimeString());
-    }, 1000);
-
-    //console.log('Ja jsem uvnitr useEffectu');
-  }, []);
+    document.title = `Počet kliknutí ${count}`;
+  }, [count]); // useEffect se ma spustit pouze kdyz se zmeni to count: [count]
 
   return (
     <div>
-      <h2>Aktuální čas</h2>
-      <p>{currentTime}</p>
+      <p>Počet kliknuti na tlačítko: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Klikni na mē</button>
     </div>
   );
 };
 
 export default App;
+
+// PRIKLAD POCITANI CASU
+// import { useState, useEffect } from 'react';
+
+// const App = () => {
+//   const [currentTime, setCurrentTime] = useState(
+//     new Date().toLocaleTimeString(),
+//   );
+
+//   useEffect(() => {
+//     setInterval(() => {
+//       setCurrentTime(new Date().toLocaleTimeString());
+//     }, 1000);
+//   }, []);
+
+//   return (
+//     <div>
+//       <h2>Aktuální čas</h2>
+//       <p>{currentTime}</p>
+//     </div>
+//   );
+// };
+
+// export default App;
 
 // useeffect se pouziva pro neco co se deje az nakonec, napriklad casovac, neni to po kliknuti, spousti se az na konec.
 
