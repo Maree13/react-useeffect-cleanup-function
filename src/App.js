@@ -11,6 +11,7 @@ const App = () => {
 
   useEffect(() => {
     document.title = `Počet kliknutí ${count}`;
+    console.log('Ja jsem useEffect');
   }, [count]); // useEffect se ma spustit pouze kdyz se zmeni to count: [count]
 
   return (
